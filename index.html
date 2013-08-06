@@ -1,0 +1,55 @@
+<!doctype html public 'ahh hell yeah'>
+<html>
+<head>
+   <meta charset=utf-8>
+   <title>JS template</title>
+</head>
+<body>
+   
+  <div class="result"></div>
+   
+  <script type="template" id="template">
+    <h2> 
+      <a href="{{href}}">
+        {{title}} 
+      </a>
+    </h2>
+    <img src="{{imgSrc}}" alt="{{title}}">
+  </script>
+ <script>
+ ;(function() {
+  // AJAX request
+  var data = [
+    {
+      title: "Awesome HTML5 ",
+      href: "#",
+      imgSrc: "https://d2o0t5hpnwv4c1.cloudfront.net/771_sticky/sticky_notes.jpg"
+    },
+    {
+      title: "Quiz #8",
+      href: "#",
+      imgSrc: "https://d2o0t5hpnwv4c1.cloudfront.net/989_quiz2jquerybasics/quiz.jpg"
+    },
+    {
+      title: "Wordpress",
+      href: "#",
+      imgSrc: "https://d2o0t5hpnwv4c1.cloudfront.net/1101_wpPlugins/wpplugincourse.png"
+    }    
+  ],
+      template = document.querySelector('#template').innerHTML,
+      result = document.querySelector('.result'),
+      i = 0, len = data.length, 
+      fragment = '';
+   
+  for ( ; i < len; i++ ) {
+    fragment += template
+      .replace( /\{\{title\}\}/, data[i].title )
+      .replace( /\{\{href\}\}/, data[i].href )
+      .replace( /\{\{imgSrc\}\}/, data[i].imgSrc );  
+  }
+ 
+  result.innerHTML = fragment;
+})();
+</script>
+</body>
+</html>
